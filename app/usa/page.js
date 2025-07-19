@@ -1,8 +1,6 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Download, Home } from "lucide-react"
 import Link from "next/link"
 
@@ -167,73 +165,90 @@ export default function USAMap() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      <header className="bg-white border-b shadow-sm">
-        <div className="container mx-auto px-4 py-3">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-2">
-              <Home className="w-6 h-6 text-orange-500" />
-              <span className="font-bold text-xl">MapChart</span>
+    <div className="usa-bg">
+      <header className="usa-header">
+        <div className="usa-header-container">
+          <div className="usa-header-flex">
+            <Link href="/" className="usa-logo-link">
+              <Home className="usa-logo-icon" />
+              <span className="usa-logo-text">MapChart</span>
             </Link>
-            <Button size="sm" onClick={downloadMap} className="bg-orange-500 hover:bg-orange-600">
-              <Download className="w-4 h-4 mr-2" />
+            <button className="usa-download-btn" onClick={downloadMap}>
+              <Download className="usa-download-icon" />
               Download
-            </Button>
+            </button>
           </div>
         </div>
       </header>
 
-      <div className="container mx-auto px-4 py-6">
-        <div className="grid lg:grid-cols-4 gap-6">
-          <div className="lg:col-span-1">
-            <Card>
-              <CardHeader>
-                <CardTitle>Colors</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-5 gap-2">
-                  {DEFAULT_COLORS.map((color) => (
-                    <button
-                      key={color}
-                      className={`w-8 h-8 rounded border-2 ${
-                        selectedColor === color ? "border-gray-800" : "border-gray-300"
-                      }`}
-                      style={{ backgroundColor: color }}
-                      onClick={() => setSelectedColor(color)}
-                    />
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+      <div className="usa-content-container">
+        <div className="usa-content-grid">
+          <div className="usa-color-panel">
+            <div className="usa-color-card">
+              <div className="usa-color-card-title">Colors</div>
+              <div className="usa-color-grid">
+                {DEFAULT_COLORS.map((color) => (
+                  <button
+                    key={color}
+                    className={`usa-color-swatch${selectedColor === color ? " usa-color-swatch-selected" : ""}`}
+                    style={{ backgroundColor: color }}
+                    onClick={() => setSelectedColor(color)}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
 
-          <div className="lg:col-span-3">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center justify-between">
-                  United States Map
-                  {hoveredState && (
-                    <span className="text-sm font-normal text-gray-600">
-                      {US_STATES_DETAILED.find((s) => s.id === hoveredState)?.name}
-                    </span>
-                  )}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <canvas
-                  ref={canvasRef}
-                  width={450}
-                  height={300}
-                  className="w-full h-auto border rounded cursor-pointer"
-                  onClick={handleCanvasClick}
-                  onMouseMove={handleCanvasMouseMove}
-                  onMouseLeave={() => setHoveredState(null)}
-                />
-              </CardContent>
-            </Card>
+          <div className="usa-map-panel">
+            <div className="usa-map-card">
+              <div className="usa-map-card-title">
+                United States Map
+                {hoveredState && (
+                  <span className="usa-map-hovered-state">
+                    {US_STATES_DETAILED.find((s) => s.id === hoveredState)?.name}
+                  </span>
+                )}
+              </div>
+              <canvas
+                ref={canvasRef}
+                width={450}
+                height={300}
+                className="usa-map-canvas"
+                onClick={handleCanvasClick}
+                onMouseMove={handleCanvasMouseMove}
+                onMouseLeave={() => setHoveredState(null)}
+              />
+            </div>
           </div>
         </div>
       </div>
+
+      <style>{`
+        .usa-bg { min-height: 100vh; background: #f8fafc; }
+        .usa-header { background: #fff; border-bottom: 1px solid #e5e7eb; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+        .usa-header-container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+        .usa-header-flex { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+        .usa-logo-link { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; }
+        .usa-logo-icon { width: 24px; height: 24px; color: #f97316; }
+        .usa-logo-text { font-weight: bold; font-size: 1.25rem; color: #22223b; }
+        .usa-download-btn { display: flex; align-items: center; background: #f97316; color: #fff; border: none; border-radius: 4px; padding: 0.5rem 1rem; font-size: 1rem; cursor: pointer; transition: background 0.2s; gap: 0.5rem; }
+        .usa-download-btn:hover { background: #ea580c; }
+        .usa-download-icon { width: 18px; height: 18px; }
+        .usa-content-container { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; }
+        .usa-content-grid { display: grid; grid-template-columns: 1fr 3fr; gap: 1.5rem; }
+        @media (max-width: 1024px) { .usa-content-grid { grid-template-columns: 1fr; } }
+        .usa-color-panel { display: flex; flex-direction: column; }
+        .usa-color-card { background: #fff; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.04); padding: 1rem; }
+        .usa-color-card-title { font-weight: 600; margin-bottom: 0.75rem; font-size: 1.1rem; }
+        .usa-color-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; }
+        .usa-color-swatch { width: 32px; height: 32px; border-radius: 50%; border: 2px solid #d1d5db; cursor: pointer; transition: border 0.2s; }
+        .usa-color-swatch-selected { border: 2px solid #22223b; }
+        .usa-map-panel { display: flex; flex-direction: column; }
+        .usa-map-card { background: #fff; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.04); padding: 1rem; }
+        .usa-map-card-title { font-weight: 600; margin-bottom: 0.75rem; font-size: 1.1rem; display: flex; align-items: center; justify-content: space-between; }
+        .usa-map-hovered-state { font-size: 0.95rem; font-weight: 400; color: #64748b; margin-left: 1rem; }
+        .usa-map-canvas { width: 100%; height: auto; border: 1px solid #d1d5db; border-radius: 6px; cursor: pointer; display: block; }
+      `}</style>
     </div>
   )
 }

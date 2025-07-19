@@ -1,0 +1,1 @@
+self.__REACT_LOADABLE_MANIFEST="{\"app/world/WorldMapClient.js -> ./world.jsx\":{\"id\":\"app/world/WorldMapClient.js -> ./world.jsx\",\"files\":[\"static/chunks/_app-pages-browser_app_world_world_jsx.js\"]}}"
