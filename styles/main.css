@@ -1,0 +1,206 @@
+html {
+    scroll-behavior: smooth;
+}
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #333;
+    outline: 1px solid #333;
+}
+.flex {
+    display: flex;
+}
+.flex-wrap {
+    flex-wrap: wrap;
+}
+.flex-col-rev {
+    flex-direction: column-reverse;
+}
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.justify-between {
+    justify-content: space-between;
+}
+.justify-evenly {
+    justify-content: space-evenly;
+}
+.flex-col {
+    flex-direction: column;
+}
+.items-center {
+    align-items: center;
+}
+.text-center {
+    text-align: center;
+}
+.pointer {
+    cursor: pointer;
+}
+.relative {
+    position: relative;
+}
+.absolute {
+    position: absolute;
+}
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+path,
+text {
+    transition: fill 1s ease-in-out;
+}
+/* NO Fill Transition for Map Editors  */
+.no-trans path,
+text {
+    transition: none !important;
+}
+/* Saves from Navbar being not Sticky */
+#__next {
+    overflow-x: unset !important;
+}
+.map-container {
+    margin-top: 30px;
+    overflow-x: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x: scroll;
+    position: relative;
+}
+@media screen and (max-width: 800px) {
+    .container {
+        flex-direction: column-reverse;
+    }
+    .map-container {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+.cursor-move {
+    cursor: all-scroll;
+}
+.draggable {
+    cursor: move;
+}
+#legend-group text .text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 5px;
+}
+.drag-label {
+    stroke: none;
+    fill: white;
+    z-index: 100;
+}
+/* remove arrow in input number */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+/* Global Styles */
+.main-heading {
+    margin: 50px auto;
+}
+.main-description {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 20px;
+    opacity: 0.8;
+}
+.beta-tag {
+    font-size: 12px;
+    padding: 2px 5px;
+    border-radius: 5px;
+    border: 1px solid rgba(141, 147, 171, 0.3);
+    margin-left: 10px;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+}
+tr:hover {
+    background-color: #111;
+}
+table thead th td {
+    height: 2.5rem;
+}
+table tbody tr td {
+    height: 3.125rem;
+}
+table th,
+table td {
+    padding: 0 0.625rem;
+    text-align: left;
+}
+table th {
+    height: 2.5rem;
+    color: #888;
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    background: #111;
+    border-bottom: 1px solid #333;
+    border-top: 1px solid #333;
+}
+table th:nth-child(1) {
+    border-bottom: 1px solid #333;
+    border-left: 1px solid #333;
+    border-radius: 4px 0 0 4px;
+    border-top: 1px solid #333;
+}
+table th:last-child {
+    border-bottom: 1px solid #333;
+    border-radius: 0 4px 4px 0;
+    border-right: 1px solid #333;
+    border-top: 1px solid #333;
+}
+table tr td {
+    color: #999;
+    font-size: 0.875rem;
+    height: 2.5rem;
+}
+table td:nth-child(1) {
+    border-left: 1px solid transparent;
+}
+table tr:not(:last-of-type) td {
+    border-bottom: 1px solid #333;
+}
+.banner{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #111;
+    width: 100%;
+    padding: 0.5rem 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+.banner a{
+    color: inherit;
+}
+.cross-btn{
+    color: #888;
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    display: inline-flex;
+}
+@media screen and (max-width: 1000px) {
+    .banner{
+        display: none;
+    }
+}
