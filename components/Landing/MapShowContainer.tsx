@@ -46,6 +46,11 @@ export const mapDt: MapShowcaseType[] = [
         link: '/europe'
     },
     {
+        name: 'Greece',
+        text: 'Greece, Based on Mercator Projection.',
+        link: '/greece'
+    },
+    {
         name: 'China',
         text: 'All Administrative Regions of China in Mercator Projection',
         link: '/china',

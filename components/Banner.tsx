@@ -2,7 +2,7 @@ import React from 'react';
 
 const Banner = () => {
     // const ref = useRef<HTMLDivElement | null>(null);
-    const showBanner = true;
+    const showBanner = false;
     // const closeBanner = () => {
     //     if (ref.current !== null) {
     //         ref.current.remove();

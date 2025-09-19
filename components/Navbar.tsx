@@ -48,14 +48,6 @@ const Navbar = ({ showNav }: Props) => {
                                 <a className="nav-link">{el.text}</a>
                             </Link>
                         ))}
-                        <a
-                            rel="noopener noreferrer"
-                            target="_blank"
-                            className="nav-link"
-                            aria-label="Link to my Instagram page"
-                            href="https://www.instagram.com/maps_affinity/">
-                            Instagram
-                        </a>
                     </div>
                 ) : (
                     ''
@@ -70,9 +62,6 @@ const Navbar = ({ showNav }: Props) => {
                         ghost
                         onClick={() => toggleTheme()}
                     /> */}
-                    <Link aria-label="Link to Changelog" href="/changelog">
-                        <a className="version-tag">{version}</a>
-                    </Link>
 
                     <div
                         className="nav-mobile-icon flex-col flex-center"
